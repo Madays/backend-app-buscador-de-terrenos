@@ -1,14 +1,10 @@
 const express = require('express');
 const router = express.Router();
-//const isAuthenticated = require('../auth/isAuthenticate')
-const {getPlaces} = require('../controllers/index')
+const isAuthenticated = require('../auth/isAuthenticated')
+const {getPlaces, createTerreno, login} = require('../controllers/index')
 
-
-
-//router.post('/login', login)
+router.post('/login', login)
 router.get('/terrenos', getPlaces)
-//router.post('/terrenos',isAuthenticated, createTerreno)
-//router.get("/buscaTerrenos/:id",isAuthenticated, oneFav)
-//router.delete("/buscaTerrenos/:id",isAuthenticated, deleteFav)
+router.post('/terrenos',isAuthenticated, createTerreno)
 
 module.exports = router;
