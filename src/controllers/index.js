@@ -42,8 +42,12 @@ const createTerreno = async(req, res) => {
     res.send('terreno creado')
 }
 
+const apiStatus = (req, res) => {
+    res.send('ok')
+}
 module.exports = {
     getPlaces,
     createTerreno,
-    login
+    login,
+    apiStatus
 } 
