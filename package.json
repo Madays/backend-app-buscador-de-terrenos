@@ -4,7 +4,7 @@
   "description": "Buscar terrenos en venta",
   "main": "src/index.js",
   "scripts": {
-    "start": "nodemon src/index.js"
+    "start": "node src/index.js"
   },
   "repository": {
     "type": "git",
