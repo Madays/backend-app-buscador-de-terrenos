@@ -1,19 +1,21 @@
-const placesModel = require("../model/terrenos")
+const placesModel = require("../model/terrenos");
+const userModel = require("../model/user");
 const jwt = require('jsonwebtoken');
 
 //login
-const login = (req, res) => {
-    console.log(req.body)
+const login = async(req, res) => {
     const user = {
         "username": req.body.username,
         "password": req.body.password
     };
-    if(user.username && user.password){
+    const dbUser = await userModel.findOne({user: user.username, password: user.password});
+    if(dbUser){
         const token = jwt.sign({user}, process.env.JWT_KEY);
         res.json({
             token
         });
     }else {
+        res.status(401)
         res.send("Login incorrect")
     }
 }
